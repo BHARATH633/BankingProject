@@ -8,17 +8,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import com.inetbanking.utilities.ReadConfig;
+
 
 public class BaseClass {
 
 	
-	public String baseURL ="http://demo.guru99.com/v4/";
+	ReadConfig readconfig = new ReadConfig();
 	
-	//public String baseURL ="https://magento.com";
-	
-	//https://magento.com/
-	public String username = "mngr356695";
-	public String password ="urUpesE";
+	public String baseURL = readconfig.getApplicationURL();
+	public String username = readconfig.getUsername();
+	public String password = readconfig.getPassword();
 	public static WebDriver driver;
     public static Logger logger;
 	
@@ -27,7 +27,7 @@ public class BaseClass {
 	@BeforeClass
 	public void setUp()
 	{
-		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\Drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"//Drivers//chromedriver.exe");
 		
 		driver = new ChromeDriver();
 		
